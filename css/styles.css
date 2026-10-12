@@ -17,6 +17,39 @@
     padding: 0;
 }
 
+.menu-toggle {
+    display: none;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+    .menu-toggle {
+        display: block; 
+    }
+    
+    #menu_principal {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #menu_principal.menu-visible {
+        display: flex; 
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #menu_principal {
+        display: flex; 
+    }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.4s ease, color 0.4s ease;
