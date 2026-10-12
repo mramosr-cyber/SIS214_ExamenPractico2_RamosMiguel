@@ -3,14 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnTema = document.getElementById('btn_modo');
     const cuerpoDocumento = document.body;
 
-    // 1. Cargar preferencia guardada
+
     const temaGuardado = JSON.parse(localStorage.getItem('temaOscuro'));
     if (temaGuardado) {
         cuerpoDocumento.classList.add('modo_oscuro');
         btnTema.textContent = '☀️ Modo Claro';
     }
 
-    // 2. Alternar y guardar preferencia
     btnTema.addEventListener('click', () => {
         cuerpoDocumento.classList.toggle('modo_oscuro');
         const esOscuro = cuerpoDocumento.classList.contains('modo_oscuro');
@@ -23,6 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Guardar en localStorage usando JSON.stringify
         localStorage.setItem('temaOscuro', JSON.stringify(esOscuro));
+    });
+
+    const btnMenu = document.getElementById('btn_menu');
+    const menuPrincipal = document.getElementById('menu_principal');
+
+    btnMenu.addEventListener('click', () => {
+        // Alternar clase de visibilidad
+        menuPrincipal.classList.toggle('menu-visible');
+        
+        // Mutar dinámicamente aria-expanded (Requisito de rúbrica)
+        const estaExpandido = menuPrincipal.classList.contains('menu-visible');
+        btnMenu.setAttribute('aria-expanded', estaExpandido.toString());
     });
 
     const formulario = document.getElementById('formulario_contacto');
