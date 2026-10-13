@@ -288,11 +288,13 @@
       <div>
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,50}">
+        <span id="error_nombre" style="color: red; font-size: 0.8rem; display: none;">Nombre inválido.</span>
       </div><br>
 
       <div>
         <label for="email">Correo electrónico:</label><br>
         <input type="email" id="email" name="email" aria-describedby="email_ayuda">
+        <span id="error_email" style="color: red; font-size: 0.8rem; display: none;">Correo no válido.</span>
         <small id="email_ayuda" class="ayuda">Ejemplo: usuario@dominio.com</small>
       </div><br>
 
