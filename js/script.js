@@ -108,6 +108,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- 5. Módulo Asíncrono e Integración REST (Fetch API) ---
+    const uiLoading = document.getElementById('gh_loading');
+    const uiError = document.getElementById('gh_error');
+    const uiSuccess = document.getElementById('gh_success');
+    const mensajeError = document.getElementById('gh_mensaje_error');
+
+    const githubUsuario = 'RamosMiguel'; 
+
+    const obtenerPerfilGitHub = async () => {
+        try {
+            // Asegurar que el estado inicial sea "Cargando"
+            uiLoading.style.display = 'block';
+            uiError.style.display = 'none';
+            uiSuccess.style.display = 'none';
+
+            // Petición asíncrona
+            const respuesta = await fetch(`https://api.github.com/users/mramosr-cyber`);
+
+            // Evaluación explícita del estado HTTP
+            if (!respuesta.ok) {
+                if (respuesta.status === 400) throw new Error('Bad Request (400): Petición malformada.');
+                if (respuesta.status === 404) throw new Error('Not Found (404): Usuario de GitHub no encontrado.');
+                if (respuesta.status === 500) throw new Error('Internal Server Error (500): Fallo en el servidor de GitHub.');
+                throw new Error(`Error HTTP no contemplado: ${respuesta.status}`);
+            }
+
+            // Parseo de la respuesta exitosa (200 OK)
+            const datos = await respuesta.json();
+
+            // Inyectar los datos en el DOM
+            document.getElementById('gh_avatar').src = datos.avatar_url;
+            document.getElementById('gh_repos').textContent = datos.public_repos;
+            document.getElementById('gh_followers').textContent = datos.followers;
+            document.getElementById('gh_enlace').href = datos.html_url;
+
+            // Cambiar la interfaz al estado "Éxito"
+            uiLoading.style.display = 'none';
+            uiSuccess.style.display = 'block';
+
+        } catch (error) {
+            // Cambiar la interfaz al estado "Error"
+            uiLoading.style.display = 'none';
+            uiError.style.display = 'block';
+            mensajeError.textContent = ` ${error.message}`;
+            console.error("Detalle del error Fetch:", error);
+        }
+    };
+
+    // Ejecutar la petición al cargar la página
+    obtenerPerfilGitHub();
+
     const formulario = document.getElementById('formulario_contacto');
 
     formulario.addEventListener('submit', (evento) => {
