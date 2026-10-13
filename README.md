@@ -1,44 +1,55 @@
-## Nombre
+# SIS214_ExamenPractico2_RamosMiguel
+
 **Estudiante:** Miguel Mateo Ramos Rodas  
 **Carrera:** Ingeniería de Sistemas  
-**Universidad:** Universidad Católica Boliviana  
+**Universidad:** Universidad Católica Boliviana "San Pablo"  
+**Asignatura:** Tecnologías Web I (SIS-214)
 
 ---
 
-## Descripción
-Este proyecto consiste en un sitio web que presenta mi hoja de vida, con todas la caracteristicas y etiquetas de html nativo, incluyendo la implementacion de form, multimedia y un portafolio interactivo.
+## Enlaces del Proyecto
+- **Despliegue en Producción (GitHub Pages):** [https://mramosr-cyber.github.io/SIS214_ExamenPractico2_RamosMiguel/]
+- **Repositorio en GitHub:** [https://github.com/mramosr-cyber/SIS214_ExamenPractico2_RamosMiguel.git]
 
 ---
 
-## Etiquetas HTML5 Utilizadas
-El sitio implementa una amplia variedad de etiquetas nativas para estructurar semánticamente el contenido:
-
-* **Estructura semántica:** `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`.
-* **Texto y formato:** `<h1>` a `<h6>`, `<p>`, `<strong>`, `<em>`, `<mark>`, `<small>`, `<time>`, `<address>`, `<details>`, `<summary>`.
-* **Listas:** `<ul>`, `<ol>`, `<li>`.
-* **Tablas:** `<table>`, `<caption>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`.
-* **Multimedia:** `<figure>`, `<figcaption>`, `<picture>`, `<img>`, `<audio>`, `<video>`, `<source>`.
-* **Formularios e interactividad:** `<form>`, `<fieldset>`, `<legend>`, `<label>`, `<input>`, `<textarea>`, `<select>`, `<option>`, `<button>`, `<meter>`.
+## Descripción General
+Este proyecto consiste en el diseño, arquitectura e implementación de una Landing Page interactiva orientada a un Portafolio Profesional personal. Desarrollado bajo estándares profesionales de ingeniería de frontend, el proyecto integra una estructura semántica HTML5 accesible, un diseño web adaptativo (Mobile-First) con CSS3, y lógica de negocio ejecutada en el navegador mediante JavaScript moderno (ES6+).
 
 ---
 
-## Elementos de Accesibilidad Implementados
-Se siguieron las pautas de accesibilidad web (WCAG) para garantizar una correcta navegación en lectores de pantalla y mediante teclado:
-
-1. **Enlace de salto accesible (Skip Link):** Permite a los usuarios de lectores de pantalla u omitir la navegación e ir directamente al contenido principal (`<a href="#main" class="skip-link">`).
-2. **Atributos ARIA:**
-   * `aria-label`: Utilizado en la etiqueta `<nav>` para describir el propósito de la navegación.
-   * `aria-labelledby`: Implementado en todas las secciones `<section>` para asociarlas directamente con su encabezado visible (`<h2>`).
-   * `aria-describedby`: Asociado al campo de correo electrónico para vincular las instrucciones de ayuda (`<small id="email-ayuda">`).
-   * `role="banner"`: Aplicado en el encabezado principal del sitio.
-3. **Texto alternativo (`alt`):** Descripción detallada en las imágenes para usuarios con discapacidad visual.
-4. **Asociación de formularios:** Todos los campos `<input>`, `<select>` y `<textarea>` están vinculados explícitamente a un `<label>` mediante el atributo `for`.
+## Tecnologías y Herramientas Utilizadas
+- **HTML5:** Marcado semántico y estructuración de la información.
+- **CSS3:** Arquitectura basada en tokens de diseño (Variables CSS), CSS Grid, Flexbox y Media Queries (Mobile-First).
+- **JavaScript (ES6+):** Manipulación del DOM, asincronía (Fetch API, async/await), tuberías funcionales (`.map`, `.filter`) y almacenamiento local.
+- **Git y GitHub:** Control de versiones y despliegue continuo.
 
 ---
 
-## Instrucciones para Visualizar el Proyecto
+## Arquitectura de la Solución y Lógica (JavaScript)
+La aplicación fue desarrollada de forma modular cumpliendo con las siguientes funcionalidades interactivas:
 
-## Localmente
-1. Clona el repositorio o descarga el archivo `.zip`:
+1. **Conmutador de Tema (Dark / Light Mode):** Alternancia de clases en el DOM con persistencia del estado visual mediante `localStorage` y serialización JSON.
+2. **Menú Hamburguesa Responsivo:** Navegación adaptativa para móviles con control dinámico del atributo de accesibilidad `aria-expanded`.
+3. **Filtro Dinámico en Tiempo Real:** Buscador de proyectos que garantiza la inmutabilidad de los datos originales utilizando métodos funcionales (`.filter()` encadenado con `.map()`).
+4. **Validación Interactiva de Formulario:** Intercepción del evento `submit` mediante `event.preventDefault()` y validación al vuelo utilizando el evento `input`.
+5. **Módulo Asíncrono (API REST):** Consumo de la API pública de GitHub mediante `Fetch API` y `async/await`, con un robusto manejo de errores (`try...catch`), validación de códigos HTTP y gestión de los estados de interfaz (Cargando, Éxito, Error).
+
+---
+
+## Accesibilidad y Estructura Semántica (HTML5)
+Se siguieron rigurosamente las pautas de accesibilidad web (WCAG):
+- **Estructura semántica:** Uso exclusivo de `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, y `<footer>`.
+- **Enlace de salto accesible (Skip Link):** Permite a los lectores de pantalla ir directamente al contenido principal.
+- **Atributos WAI-ARIA:** Implementación de `aria-label`, `aria-labelledby`, `aria-describedby` y `aria-expanded` en componentes dinámicos.
+- **Asociación de formularios y multimedia:** Campos vinculados con `<label for="...">` y textos alternativos (`alt`) en imágenes.
+
+---
+
+## Instrucciones para Ejecución Local
+
+Para visualizar y ejecutar este proyecto en un entorno local, sigue estos pasos:
+
+1. Clona este repositorio en tu máquina local usando la terminal:
    ```bash
-   git clone [https://github.com/mramosr-cyber/hoja-vida-Ramos-Miguel.git](https://github.com/mramosr-cyber/hoja-vida-Ramos-Miguel.git)
+   git clone [https://github.com/tu-usuario/SIS214_ExamenPractico2_RamosMiguel.git](https://github.com/tu-usuario/SIS214_ExamenPractico2_RamosMiguel.git)
