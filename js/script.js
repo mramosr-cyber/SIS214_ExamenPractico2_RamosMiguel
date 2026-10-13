@@ -86,6 +86,28 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarProyectos(proyectosFiltrados);
     });
 
+    // --- 4. Validación en Tiempo Real ---
+    const inputNombre = document.getElementById('nombre');
+    const errorNombre = document.getElementById('error_nombre');
+    const inputEmail = document.getElementById('email');
+    const errorEmail = document.getElementById('error_email');
+
+    inputNombre.addEventListener('input', () => {
+        if (inputNombre.validity.patternMismatch || inputNombre.value.trim() === '') {
+            errorNombre.style.display = 'block';
+        } else {
+            errorNombre.style.display = 'none';
+        }
+    });
+
+    inputEmail.addEventListener('input', () => {
+        if (inputEmail.validity.typeMismatch || inputEmail.value.trim() === '') {
+            errorEmail.style.display = 'block';
+        } else {
+            errorEmail.style.display = 'none';
+        }
+    });
+
     const formulario = document.getElementById('formulario_contacto');
 
     formulario.addEventListener('submit', (evento) => {
